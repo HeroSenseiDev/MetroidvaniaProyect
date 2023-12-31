@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://caaqo6lty0qv2"]
+
+[ext_resource type="Texture2D" uid="uid://c5a7s5itl10y6" path="res://Art/Sprites/Master/viejo 1.png" id="1_rtl2b"]
+[ext_resource type="Texture2D" uid="uid://dl7ru63ext58o" path="res://Art/Sprites/Master/viejo 2.png" id="2_7daun"]
+[ext_resource type="Texture2D" uid="uid://0km2bytud3xj" path="res://Art/Sprites/Master/viejo 3.png" id="3_kfacm"]
+[ext_resource type="Script" path="res://Scripts/NPC'S/AreaDialogue.gd" id="4_38dsm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uxejy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_rtl2b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_7daun")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kfacm")
+}],
+"loop": true,
+"name": &"iDLE",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t4wi7"]
+radius = 379.527
+
+[node name="MasterNPC" type="Node2D" groups=["Npc\'s"]]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, -253)
+sprite_frames = SubResource("SpriteFrames_uxejy")
+animation = &"iDLE"
+frame_progress = 0.476277
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("4_38dsm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-8, -207)
+shape = SubResource("CircleShape2D_t4wi7")

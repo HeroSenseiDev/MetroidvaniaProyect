@@ -1,0 +1,288 @@
+[gd_scene load_steps=62 format=3 uid="uid://0v5cp8nvr4u4"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerScripts/Player.gd" id="1_sk5bm"]
+[ext_resource type="Script" path="res://Scripts/PlayerScripts/StateMachine.gd" id="2_4geli"]
+[ext_resource type="Texture2D" uid="uid://banlnb2cul62k" path="res://Art/Sprites/Kairos/Slide/Kairos-Slide_0.png" id="3_c81vo"]
+[ext_resource type="Texture2D" uid="uid://by87b5qdts4be" path="res://Art/Sprites/Kairos/Run/Kairos-Run_12.png" id="3_gw0f5"]
+[ext_resource type="Texture2D" uid="uid://f3yb5sp565yp" path="res://Art/Sprites/Kairos/Idle/Kairos-Idle_08.png" id="3_x074o"]
+[ext_resource type="Texture2D" uid="uid://bcwad5fp1ulj3" path="res://Art/Sprites/Kairos/Attack/Kairos-Attack_0.png" id="4_4kruk"]
+[ext_resource type="Texture2D" uid="uid://ds56vg86hcwh2" path="res://Art/Sprites/Kairos/Idle/Kairos-Idle_00.png" id="4_at3sl"]
+[ext_resource type="Texture2D" uid="uid://c22l1nqul5exo" path="res://Art/Sprites/Kairos/Idle/Kairos-Idle_01.png" id="5_jh2ej"]
+[ext_resource type="Texture2D" uid="uid://caha0quciv37a" path="res://Art/Sprites/Kairos/Attack/Kairos-Attack_1.png" id="5_nhd4i"]
+[ext_resource type="Texture2D" uid="uid://ll2hjxhugexr" path="res://Art/Sprites/Kairos/Attack/Kairos-Attack_2.png" id="6_vmvul"]
+[ext_resource type="Texture2D" uid="uid://kevgnkie2xuq" path="res://Art/Sprites/Kairos/Idle/Kairos-Idle_02.png" id="6_wvuxc"]
+[ext_resource type="Texture2D" uid="uid://cdrnarvjufbu" path="res://Art/Sprites/Kairos/Idle/Kairos-Idle_03.png" id="7_ep50n"]
+[ext_resource type="Texture2D" uid="uid://b4y5m2pwafofm" path="res://Art/Sprites/Kairos/Attack/Kairos-Attack_3.png" id="7_gxc11"]
+[ext_resource type="Texture2D" uid="uid://b42edaknfoerv" path="res://Art/Sprites/Kairos/Idle/Kairos-Idle_06.png" id="8_43qg3"]
+[ext_resource type="Texture2D" uid="uid://dnij1b8fithve" path="res://Art/Sprites/Kairos/Attack/Kairos-Attack_4.png" id="8_ruq22"]
+[ext_resource type="Texture2D" uid="uid://dbgeiqh2ke5r7" path="res://Art/Sprites/Kairos/Idle/Kairos-Idle_05.png" id="8_xvsk3"]
+[ext_resource type="Texture2D" uid="uid://bs34gobubf68y" path="res://Art/Sprites/Kairos/Attack/Kairos-Attack_5.png" id="9_je5fg"]
+[ext_resource type="Texture2D" uid="uid://dcixxv3oj06d2" path="res://Art/Sprites/Kairos/Idle/Kairos-Idle_07.png" id="9_kxsk4"]
+[ext_resource type="Texture2D" uid="uid://csvr4llh4rkh7" path="res://Art/Sprites/Kairos/Attack/Kairos-Attack_6.png" id="10_wxkkn"]
+[ext_resource type="Texture2D" uid="uid://dm0g78m7372en" path="res://Art/Sprites/Kairos/Idle/Kairos-Idle_09.png" id="11_hn5ru"]
+[ext_resource type="Texture2D" uid="uid://bsure715bubcd" path="res://Art/Sprites/Kairos/Idle/Kairos-Idle_10.png" id="12_lkk4f"]
+[ext_resource type="Texture2D" uid="uid://bkr4xqwje5ulu" path="res://Art/Sprites/Kairos/Idle/Kairos-Idle_11.png" id="13_1q186"]
+[ext_resource type="Texture2D" uid="uid://chgagvmyow2ve" path="res://Art/Sprites/Kairos/Idle/Kairos-Idle_12.png" id="14_41r72"]
+[ext_resource type="Texture2D" uid="uid://cy5ww0bbv1phi" path="res://Art/Sprites/Kairos/Run/Kairos-Run_01.png" id="17_spvq2"]
+[ext_resource type="Texture2D" uid="uid://dihput37riqox" path="res://Art/Sprites/Kairos/Run/Kairos-Run_02.png" id="18_eeugo"]
+[ext_resource type="Texture2D" uid="uid://beg6b5nvkj3f1" path="res://Art/Sprites/Kairos/Run/Kairos-Run_03.png" id="19_21qlu"]
+[ext_resource type="Texture2D" uid="uid://cm4vkrj60xgwj" path="res://Art/Sprites/Kairos/Run/Kairos-Run_04.png" id="20_61deq"]
+[ext_resource type="Texture2D" uid="uid://dyjr7dqyr1a7p" path="res://Art/Sprites/Kairos/Run/Kairos-Run_05.png" id="21_lg2an"]
+[ext_resource type="Texture2D" uid="uid://ct71lc4indycu" path="res://Art/Sprites/Kairos/Run/Kairos-Run_06.png" id="22_g17jv"]
+[ext_resource type="Texture2D" uid="uid://d36pdiccrjwq5" path="res://Art/Sprites/Kairos/Run/Kairos-Run_07.png" id="23_14u4n"]
+[ext_resource type="Texture2D" uid="uid://sq5akfk25pmi" path="res://Art/Sprites/Kairos/Jump/Kairos-Jump_0.png" id="23_h8wnc"]
+[ext_resource type="Texture2D" uid="uid://ctk4yrsubxph1" path="res://Art/Sprites/Kairos/Run/Kairos-Run_08.png" id="24_phskp"]
+[ext_resource type="Texture2D" uid="uid://10gxu824u5wj" path="res://Art/Sprites/Kairos/Jump/Kairos-Jump_1.png" id="24_ylh3s"]
+[ext_resource type="Texture2D" uid="uid://ct7vnxmtbt1is" path="res://Art/Sprites/Kairos/Run/Kairos-Run_09.png" id="25_bjtlo"]
+[ext_resource type="Texture2D" uid="uid://d1ox4btgmo1u" path="res://Art/Sprites/Kairos/Jump/Kairos-Jump_2.png" id="25_nvgwc"]
+[ext_resource type="Texture2D" uid="uid://dlmyo4wu5c8h6" path="res://Art/Sprites/Kairos/Run/Kairos-Run_10.png" id="26_w7m0k"]
+[ext_resource type="Texture2D" uid="uid://dmwob56bevykc" path="res://Art/Sprites/Kairos/Jump/Kairos-Jump_3.png" id="26_w86wq"]
+[ext_resource type="Texture2D" uid="uid://dqpkn8l8kcms2" path="res://Art/Sprites/Kairos/Run/Kairos-Run_11.png" id="27_d2bj4"]
+[ext_resource type="Texture2D" uid="uid://d38rlp30dhsae" path="res://Art/Sprites/Kairos/Jump/Kairos-Jump_4.png" id="27_ea1xw"]
+[ext_resource type="Texture2D" uid="uid://bfywlwyytytn7" path="res://Art/Sprites/Kairos/Run/Kairos-Run_13.png" id="28_nbmod"]
+[ext_resource type="Texture2D" uid="uid://dy8rhaqdk1ro6" path="res://Art/Sprites/Kairos/Jump/Kairos-Jump_5.png" id="28_skyhi"]
+[ext_resource type="Texture2D" uid="uid://bku4iiyk8iy0o" path="res://Art/Sprites/Kairos/Run/Kairos-Run_14.png" id="29_p6rdc"]
+[ext_resource type="Texture2D" uid="uid://dqs32jopoqb12" path="res://Art/Sprites/Kairos/Jump/Kairos-Jump_6.png" id="29_tvumi"]
+[ext_resource type="Texture2D" uid="uid://d146nx00v3s7i" path="res://Art/Sprites/Kairos/Jump/Kairos-Jump_7.png" id="30_0hkw6"]
+[ext_resource type="Texture2D" uid="uid://btlp6kmc1x2rq" path="res://Art/Sprites/Kairos/Run/Kairos-Run_15.png" id="30_p24ut"]
+[ext_resource type="Texture2D" uid="uid://d4lhr2as0tm2h" path="res://Art/Sprites/Kairos/Jump/Kairos-Jump_8.png" id="31_g166o"]
+[ext_resource type="Script" path="res://Scripts/PlayerScripts/Movement.gd" id="50_puyo3"]
+[ext_resource type="Script" path="res://Scripts/PlayerScripts/AttackDirector.gd" id="51_pnv81"]
+[ext_resource type="Script" path="res://Scripts/PlayerScripts/Jump.gd" id="51_wrkua"]
+[ext_resource type="Script" path="res://Scripts/PlayerScripts/HitboxComponent.gd" id="52_k0bpp"]
+[ext_resource type="Script" path="res://Scripts/PlayerScripts/HealthComponent.gd" id="53_d2ay0"]
+
+[sub_resource type="Animation" id="Animation_s3d27"]
+resource_name = "Attack"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_4kruk"), ExtResource("5_nhd4i"), ExtResource("6_vmvul"), ExtResource("7_gxc11"), ExtResource("8_ruq22"), ExtResource("9_je5fg"), ExtResource("10_wxkkn")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AttackDirector/HitboxComponent/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_6xsup"]
+resource_name = "Idle"
+length = 1.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_at3sl"), ExtResource("5_jh2ej"), ExtResource("6_wvuxc"), ExtResource("7_ep50n"), ExtResource("8_xvsk3"), ExtResource("8_43qg3"), ExtResource("9_kxsk4"), ExtResource("3_x074o"), ExtResource("11_hn5ru"), ExtResource("12_lkk4f"), ExtResource("13_1q186"), ExtResource("14_41r72")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AttackDirector/HitboxComponent/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_5cpw0"]
+resource_name = "Jump"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("23_h8wnc"), ExtResource("24_ylh3s"), ExtResource("25_nvgwc"), ExtResource("26_w86wq"), ExtResource("27_ea1xw"), ExtResource("28_skyhi"), ExtResource("29_tvumi"), ExtResource("30_0hkw6"), ExtResource("31_g166o")]
+}
+
+[sub_resource type="Animation" id="Animation_encbq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AttackDirector/HitboxComponent/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_n20r4"]
+resource_name = "Run"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("17_spvq2"), ExtResource("18_eeugo"), ExtResource("19_21qlu"), ExtResource("20_61deq"), ExtResource("21_lg2an"), ExtResource("22_g17jv"), ExtResource("23_14u4n"), ExtResource("24_phskp"), ExtResource("25_bjtlo"), ExtResource("26_w7m0k"), ExtResource("27_d2bj4"), ExtResource("3_gw0f5"), ExtResource("28_nbmod"), ExtResource("29_p6rdc"), ExtResource("30_p24ut")]
+}
+
+[sub_resource type="Animation" id="Animation_dbxoh"]
+resource_name = "Slide"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_c81vo")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4wtr7"]
+_data = {
+"Attack": SubResource("Animation_s3d27"),
+"Idle": SubResource("Animation_6xsup"),
+"Jump": SubResource("Animation_5cpw0"),
+"RESET": SubResource("Animation_encbq"),
+"Run": SubResource("Animation_n20r4"),
+"Slide": SubResource("Animation_dbxoh")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ro3xv"]
+radius = 5.0
+height = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_46lp1"]
+radius = 5.68784
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r2p2u"]
+radius = 8.6713
+
+[node name="Kairos" type="CharacterBody2D" node_paths=PackedStringArray("jump_particles", "health_component", "animplayer")]
+scale = Vector2(16, 16)
+collision_layer = 2
+script = ExtResource("1_sk5bm")
+jump_particles = NodePath("CPUParticles2D")
+health_component = NodePath("HealthComponent")
+animplayer = NodePath("AnimationPlayer")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_4geli")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.733333, -8.06667)
+scale = Vector2(0.0397608, 0.0397607)
+texture = ExtResource("6_wvuxc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4wtr7")
+}
+speed_scale = 3.5
+
+[node name="PlayerCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("CapsuleShape2D_ro3xv")
+one_way_collision_margin = 5.0
+
+[node name="Movement" type="Node2D" parent="." node_paths=PackedStringArray("raycast")]
+script = ExtResource("50_puyo3")
+raycast = NodePath("RayCast2D")
+
+[node name="RayCast2D" type="RayCast2D" parent="Movement"]
+position = Vector2(0, -7.945)
+target_position = Vector2(15, 0)
+
+[node name="Jump" type="Node2D" parent="."]
+script = ExtResource("51_wrkua")
+
+[node name="dashTimer" type="Timer" parent="."]
+
+[node name="canDashTimer" type="Timer" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-2, 0)
+zoom = Vector2(0.45, 0.45)
+position_smoothing_enabled = true
+drag_left_margin = 0.15
+drag_top_margin = 0.3
+drag_right_margin = 0.15
+drag_bottom_margin = 0.15
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="HealthComponent" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("53_d2ay0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthComponent"]
+position = Vector2(0.125, -5.6875)
+shape = SubResource("CircleShape2D_46lp1")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(-1.87694, 2.03855)
+emitting = false
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+direction = Vector2(0, 0)
+gravity = Vector2(0, 0)
+initial_velocity_max = 20.0
+scale_amount_min = 30.0
+scale_amount_max = 30.0
+
+[node name="AttackDirector" type="Node2D" parent="." node_paths=PackedStringArray("hitbox")]
+position = Vector2(0, -7.88)
+script = ExtResource("51_pnv81")
+hitbox = NodePath("HitboxComponent")
+orbit_radius = 100
+
+[node name="HitboxComponent" type="Area2D" parent="AttackDirector"]
+position = Vector2(11, 0)
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("52_k0bpp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackDirector/HitboxComponent"]
+shape = SubResource("CircleShape2D_r2p2u")
+disabled = true
+
+[connection signal="timeout" from="dashTimer" to="Movement" method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="canDashTimer" to="Movement" method="_on_can_dash_timer_timeout"]

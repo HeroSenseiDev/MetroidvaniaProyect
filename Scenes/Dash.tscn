@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://couse2masat8y"]
+
+[sub_resource type="GDScript" id="GDScript_6ur05"]
+script/source = "extends Node2D
+
+
+@onready var timer = $dashTimer
+
+func start_dash(dur):
+	timer.wait_time = dur
+	timer.start()
+func is_dashing():
+	return !timer.is_stopped()
+"
+
+[node name="Dash" type="Node2D"]
+script = SubResource("GDScript_6ur05")
+
+[node name="DashTimer" type="Timer" parent="."]

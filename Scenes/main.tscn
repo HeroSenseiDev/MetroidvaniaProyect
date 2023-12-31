@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpw2pqulyy8oy"]
+
+[ext_resource type="PackedScene" uid="uid://clc340xqlbn3a" path="res://Scenes/Level1.tscn" id="1_pb2i6"]
+[ext_resource type="PackedScene" uid="uid://0v5cp8nvr4u4" path="res://Scenes/Kairos.tscn" id="2_4upec"]
+[ext_resource type="Texture2D" uid="uid://duq2qc7jg6h66" path="res://Proyecto nuevo.jpg" id="3_paucg"]
+[ext_resource type="PackedScene" uid="uid://cyeb8q8tmc7tn" path="res://Scenes/Robot.tscn" id="4_a4okr"]
+[ext_resource type="PackedScene" uid="uid://caaqo6lty0qv2" path="res://Scenes/MasterNPC.tscn" id="5_tgdnl"]
+
+[node name="Main" type="Node2D"]
+
+[node name="TileMap" parent="." instance=ExtResource("1_pb2i6")]
+
+[node name="MasterNPC" parent="." instance=ExtResource("5_tgdnl")]
+position = Vector2(4450, -6178)
+
+[node name="Kairos" parent="." instance=ExtResource("2_4upec")]
+position = Vector2(965.183, 965.49)
+jump_force = -5000
+
+[node name="PointLight2D" type="PointLight2D" parent="Kairos"]
+position = Vector2(1.87238, -8.78125)
+scale = Vector2(0.275718, 0.245467)
+texture = ExtResource("3_paucg")
+
+[node name="Settings" type="Node2D" parent="."]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Settings"]
+color = Color(0, 0, 0, 1)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Settings"]
+color = Color(0.74902, 0.65098, 0.792157, 1)
+energy = 0.79
+
+[node name="Enemy" parent="." instance=ExtResource("4_a4okr")]
+position = Vector2(3331.84, 374.643)
+
+[node name="Enemy2" parent="." instance=ExtResource("4_a4okr")]
+position = Vector2(3873.82, -2877.88)

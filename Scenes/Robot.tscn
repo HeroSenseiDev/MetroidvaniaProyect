@@ -1,0 +1,141 @@
+[gd_scene load_steps=19 format=3 uid="uid://cyeb8q8tmc7tn"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/Robot.gd" id="1_alusy"]
+[ext_resource type="Texture2D" uid="uid://xm0a8ck707t6" path="res://Art/Sprites/Enemies/die 1.png" id="2_4l6a3"]
+[ext_resource type="Texture2D" uid="uid://c1avr6w1y3mmx" path="res://Art/Sprites/Enemies/die 2.png" id="3_aglql"]
+[ext_resource type="Texture2D" uid="uid://jsiewd21ahyk" path="res://Art/Sprites/Enemies/enemy run 1.png" id="4_l8o7u"]
+[ext_resource type="Texture2D" uid="uid://dhaevcopgmr35" path="res://Art/Sprites/Enemies/enemy run 2.png" id="5_8od01"]
+[ext_resource type="Script" path="res://Scripts/PlayerScripts/HitboxComponent.gd" id="6_bghir"]
+[ext_resource type="Script" path="res://Scripts/PlayerScripts/HealthComponent.gd" id="7_xrkvh"]
+[ext_resource type="Script" path="res://Scripts/HealthBarGUI.gd" id="8_ffqly"]
+
+[sub_resource type="Animation" id="Animation_rg0u4"]
+resource_name = "Die"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_4l6a3"), ExtResource("3_aglql")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_bvtlo"]
+resource_name = "Run"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("4_l8o7u"), ExtResource("5_8od01")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y1kw0"]
+_data = {
+"Die": SubResource("Animation_rg0u4"),
+"Run": SubResource("Animation_bvtlo")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hfdix"]
+radius = 76.1539
+height = 196.769
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sjgy6"]
+radius = 76.9385
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2rs4c"]
+radius = 94.0383
+
+[sub_resource type="Gradient" id="Gradient_inibd"]
+colors = PackedColorArray(0.243137, 0.243137, 0.243137, 1, 0.243137, 0.243137, 0.243137, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lxk55"]
+gradient = SubResource("Gradient_inibd")
+width = 200
+height = 31
+
+[sub_resource type="Gradient" id="Gradient_xl87l"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4xmce"]
+gradient = SubResource("Gradient_xl87l")
+width = 200
+height = 31
+
+[node name="Enemy" type="CharacterBody2D" groups=["Enemies"]]
+scale = Vector2(1.3, 1.3)
+collision_layer = 8
+script = ExtResource("1_alusy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_l8o7u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_y1kw0")
+}
+
+[node name="RobotCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5.38462)
+shape = SubResource("CapsuleShape2D_hfdix")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(-57, 0)
+scale = Vector2(5, 5)
+target_position = Vector2(0, 25)
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("6_bghir")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_sjgy6")
+
+[node name="HealthComponent" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("7_xrkvh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthComponent"]
+shape = SubResource("CircleShape2D_2rs4c")
+
+[node name="HealthBar" type="TextureProgressBar" parent="." node_paths=PackedStringArray("health_component")]
+offset_left = -99.2308
+offset_top = -158.462
+offset_right = 100.769
+offset_bottom = -127.462
+max_value = 3.0
+value = 3.0
+texture_under = SubResource("GradientTexture2D_lxk55")
+texture_progress = SubResource("GradientTexture2D_4xmce")
+tint_progress = Color(1, 0, 0, 1)
+script = ExtResource("8_ffqly")
+health_component = NodePath("../HealthComponent")

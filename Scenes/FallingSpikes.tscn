@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://3gkvs4pqwusj"]
+
+[ext_resource type="Script" path="res://Scripts/Interactable/FallingSpikes.gd" id="1_0xnho"]
+[ext_resource type="Texture2D" uid="uid://csts1gq1b83i7" path="res://icon.svg" id="1_phcq1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_godi5"]
+size = Vector2(109, 244)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u12xu"]
+size = Vector2(254, 1567)
+
+[node name="FallingSpikes" type="Node2D"]
+script = ExtResource("1_0xnho")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_phcq1")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-3.5, -5)
+shape = SubResource("RectangleShape2D_godi5")
+
+[node name="PlayerDetect" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetect"]
+position = Vector2(2, 657.5)
+shape = SubResource("RectangleShape2D_u12xu")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_entered" from="PlayerDetect" to="." method="_on_player_detect_area_entered"]

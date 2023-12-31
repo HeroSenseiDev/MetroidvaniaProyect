@@ -1,0 +1,408 @@
+[gd_scene load_steps=75 format=3 uid="uid://0v5cp8nvr4u4"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerScripts/Player.gd" id="1_sk5bm"]
+[ext_resource type="Script" path="res://Scripts/PlayerScripts/StateMachine.gd" id="2_4geli"]
+[ext_resource type="Texture2D" uid="uid://banlnb2cul62k" path="res://Art/Sprites/Kairos/Slide/Kairos-Slide_0.png" id="3_c81vo"]
+[ext_resource type="Script" path="res://Scripts/PlayerScripts/PlayerStates/Idle.gd" id="3_j2n1x"]
+[ext_resource type="Texture2D" uid="uid://bcwad5fp1ulj3" path="res://Art/Sprites/Kairos/Attack/Kairos-Attack_0.png" id="4_4kruk"]
+[ext_resource type="Texture2D" uid="uid://ds56vg86hcwh2" path="res://Art/Sprites/Kairos/Idle/Kairos-Idle_00.png" id="4_at3sl"]
+[ext_resource type="Texture2D" uid="uid://kevgnkie2xuq" path="res://Art/Sprites/Kairos/Idle/Kairos-Idle_02.png" id="6_wvuxc"]
+[ext_resource type="Texture2D" uid="uid://dbgeiqh2ke5r7" path="res://Art/Sprites/Kairos/Idle/Kairos-Idle_05.png" id="8_xvsk3"]
+[ext_resource type="Texture2D" uid="uid://bs34gobubf68y" path="res://Art/Sprites/Kairos/Attack/Kairos-Attack_5.png" id="9_je5fg"]
+[ext_resource type="Texture2D" uid="uid://csvr4llh4rkh7" path="res://Art/Sprites/Kairos/Attack/Kairos-Attack_6.png" id="10_wxkkn"]
+[ext_resource type="Texture2D" uid="uid://chgagvmyow2ve" path="res://Art/Sprites/Kairos/Idle/Kairos-Idle_12.png" id="14_41r72"]
+[ext_resource type="Texture2D" uid="uid://cy5ww0bbv1phi" path="res://Art/Sprites/Kairos/Run/Kairos-Run_01.png" id="17_spvq2"]
+[ext_resource type="Texture2D" uid="uid://d36pdiccrjwq5" path="res://Art/Sprites/Kairos/Run/Kairos-Run_07.png" id="23_14u4n"]
+[ext_resource type="Texture2D" uid="uid://sq5akfk25pmi" path="res://Art/Sprites/Kairos/Jump/Kairos-Jump_0.png" id="23_h8wnc"]
+[ext_resource type="Texture2D" uid="uid://10gxu824u5wj" path="res://Art/Sprites/Kairos/Jump/Kairos-Jump_1.png" id="24_ylh3s"]
+[ext_resource type="Texture2D" uid="uid://d1ox4btgmo1u" path="res://Art/Sprites/Kairos/Jump/Kairos-Jump_2.png" id="25_nvgwc"]
+[ext_resource type="Texture2D" uid="uid://dlmyo4wu5c8h6" path="res://Art/Sprites/Kairos/Run/Kairos-Run_10.png" id="26_w7m0k"]
+[ext_resource type="Texture2D" uid="uid://dmwob56bevykc" path="res://Art/Sprites/Kairos/Jump/Kairos-Jump_3.png" id="26_w86wq"]
+[ext_resource type="Script" path="res://Scripts/PlayerScripts/Camera2D.gd" id="27_dio5j"]
+[ext_resource type="Texture2D" uid="uid://d38rlp30dhsae" path="res://Art/Sprites/Kairos/Jump/Kairos-Jump_4.png" id="27_ea1xw"]
+[ext_resource type="Texture2D" uid="uid://dy8rhaqdk1ro6" path="res://Art/Sprites/Kairos/Jump/Kairos-Jump_5.png" id="28_skyhi"]
+[ext_resource type="Texture2D" uid="uid://dqs32jopoqb12" path="res://Art/Sprites/Kairos/Jump/Kairos-Jump_6.png" id="29_tvumi"]
+[ext_resource type="Texture2D" uid="uid://d146nx00v3s7i" path="res://Art/Sprites/Kairos/Jump/Kairos-Jump_7.png" id="30_0hkw6"]
+[ext_resource type="Texture2D" uid="uid://d4lhr2as0tm2h" path="res://Art/Sprites/Kairos/Jump/Kairos-Jump_8.png" id="31_g166o"]
+[ext_resource type="Texture2D" uid="uid://3js7tr4u7gus" path="res://Art/Sprites/Kairos-Dash_0.png" id="47_vjqw2"]
+[ext_resource type="Script" path="res://Scripts/PlayerScripts/Movement.gd" id="50_puyo3"]
+[ext_resource type="Script" path="res://Scripts/PlayerScripts/AttackDirector.gd" id="51_pnv81"]
+[ext_resource type="Script" path="res://Scripts/PlayerScripts/Jump.gd" id="51_wrkua"]
+[ext_resource type="Script" path="res://Scripts/PlayerScripts/HitboxComponent.gd" id="52_k0bpp"]
+[ext_resource type="Script" path="res://Scripts/PlayerScripts/HealthComponent.gd" id="53_d2ay0"]
+
+[sub_resource type="Animation" id="Animation_s3d27"]
+resource_name = "Attack"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [ExtResource("4_4kruk"), ExtResource("9_je5fg"), ExtResource("10_wxkkn")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AttackDirector/HitboxComponent/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_stlbp"]
+resource_name = "Dash"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("47_vjqw2")]
+}
+
+[sub_resource type="Animation" id="Animation_6xsup"]
+resource_name = "Idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [ExtResource("4_at3sl"), ExtResource("6_wvuxc"), ExtResource("8_xvsk3"), ExtResource("14_41r72"), ExtResource("4_at3sl")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AttackDirector/HitboxComponent/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_5cpw0"]
+resource_name = "Jump"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [ExtResource("23_h8wnc"), ExtResource("24_ylh3s"), ExtResource("25_nvgwc"), ExtResource("26_w86wq"), ExtResource("27_ea1xw"), ExtResource("28_skyhi"), ExtResource("29_tvumi"), ExtResource("30_0hkw6"), ExtResource("31_g166o")]
+}
+
+[sub_resource type="Animation" id="Animation_encbq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AttackDirector/HitboxComponent/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_4kruk")]
+}
+
+[sub_resource type="Animation" id="Animation_n20r4"]
+resource_name = "Run"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [ExtResource("17_spvq2"), ExtResource("23_14u4n"), ExtResource("26_w7m0k")]
+}
+
+[sub_resource type="Animation" id="Animation_dbxoh"]
+resource_name = "Slide"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [ExtResource("3_c81vo")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4wtr7"]
+_data = {
+"Attack": SubResource("Animation_s3d27"),
+"Dash": SubResource("Animation_stlbp"),
+"Idle": SubResource("Animation_6xsup"),
+"Jump": SubResource("Animation_5cpw0"),
+"RESET": SubResource("Animation_encbq"),
+"Run": SubResource("Animation_n20r4"),
+"Slide": SubResource("Animation_dbxoh")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mgytj"]
+animation = &"Attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_csi6u"]
+animation = &"Dash"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u0wxg"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wtwb4"]
+animation = &"Jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lygdr"]
+animation = &"Run"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_i7gq0"]
+animation = &"Slide"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hassm"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_arof1"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5232h"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6d0nh"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0dxsm"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c3vlg"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1qhgr"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_576i0"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_okwij"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mduku"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pywbg"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ajj62"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n2dvw"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_py4ch"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mn0cw"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_505f0"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_07dij"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i4tec"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j7jd6"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3gjw3"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_x3uxu"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kr21t"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mq24x"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p205g"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8d2al"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3rnav"]
+states/Attack/node = SubResource("AnimationNodeAnimation_mgytj")
+states/Attack/position = Vector2(257.037, -120.431)
+states/Dash/node = SubResource("AnimationNodeAnimation_csi6u")
+states/Dash/position = Vector2(608.198, -120.561)
+states/Idle/node = SubResource("AnimationNodeAnimation_u0wxg")
+states/Idle/position = Vector2(437.3, -119.333)
+states/Jump/node = SubResource("AnimationNodeAnimation_wtwb4")
+states/Jump/position = Vector2(331.63, -30.1194)
+states/Run/node = SubResource("AnimationNodeAnimation_lygdr")
+states/Run/position = Vector2(437.284, -284.37)
+states/Slide/node = SubResource("AnimationNodeAnimation_i7gq0")
+states/Slide/position = Vector2(437.84, 76)
+states/Start/position = Vector2(156, -30.2222)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_hassm"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_arof1"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_5232h"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_6d0nh"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_0dxsm"), "Attack", "Run", SubResource("AnimationNodeStateMachineTransition_c3vlg"), "Run", "Attack", SubResource("AnimationNodeStateMachineTransition_1qhgr"), "Dash", "Run", SubResource("AnimationNodeStateMachineTransition_576i0"), "Run", "Dash", SubResource("AnimationNodeStateMachineTransition_okwij"), "Dash", "Idle", SubResource("AnimationNodeStateMachineTransition_mduku"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_pywbg"), "Jump", "Idle", SubResource("AnimationNodeStateMachineTransition_ajj62"), "Jump", "Run", SubResource("AnimationNodeStateMachineTransition_n2dvw"), "Run", "Jump", SubResource("AnimationNodeStateMachineTransition_py4ch"), "Jump", "Attack", SubResource("AnimationNodeStateMachineTransition_mn0cw"), "Attack", "Jump", SubResource("AnimationNodeStateMachineTransition_505f0"), "Idle", "Dash", SubResource("AnimationNodeStateMachineTransition_07dij"), "Idle", "Slide", SubResource("AnimationNodeStateMachineTransition_i4tec"), "Slide", "Idle", SubResource("AnimationNodeStateMachineTransition_j7jd6"), "Dash", "Slide", SubResource("AnimationNodeStateMachineTransition_3gjw3"), "Slide", "Dash", SubResource("AnimationNodeStateMachineTransition_x3uxu"), "Slide", "Jump", SubResource("AnimationNodeStateMachineTransition_kr21t"), "Jump", "Slide", SubResource("AnimationNodeStateMachineTransition_mq24x"), "Jump", "Dash", SubResource("AnimationNodeStateMachineTransition_p205g"), "Dash", "Jump", SubResource("AnimationNodeStateMachineTransition_8d2al")]
+graph_offset = Vector2(-347, -244)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ro3xv"]
+radius = 5.0
+height = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_46lp1"]
+radius = 5.68784
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3khjw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5vvgt"]
+radius = 5.11775
+
+[node name="Kairos" type="CharacterBody2D" node_paths=PackedStringArray("jump_particles", "health_component", "animplayer")]
+scale = Vector2(16, 16)
+collision_layer = 2
+script = ExtResource("1_sk5bm")
+speed = 1700
+jump_force = -2600
+jump_particles = NodePath("CPUParticles2D")
+health_component = NodePath("HealthComponent")
+animplayer = NodePath("AnimationTree/AnimationPlayer")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_4geli")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("3_j2n1x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.733, -8.067)
+scale = Vector2(0.0397608, 0.0397607)
+texture = ExtResource("4_4kruk")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4wtr7")
+}
+tree_root = SubResource("AnimationNodeStateMachine_3rnav")
+anim_player = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationTree"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_4wtr7")
+}
+
+[node name="PlayerCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("CapsuleShape2D_ro3xv")
+one_way_collision_margin = 5.0
+
+[node name="Movement" type="Node2D" parent="." node_paths=PackedStringArray("raycast")]
+script = ExtResource("50_puyo3")
+raycast = NodePath("RayCast2D")
+
+[node name="RayCast2D" type="RayCast2D" parent="Movement"]
+position = Vector2(0, -7.945)
+target_position = Vector2(15, 0)
+
+[node name="Jump" type="Node2D" parent="."]
+script = ExtResource("51_wrkua")
+
+[node name="dashTimer" type="Timer" parent="."]
+
+[node name="canDashTimer" type="Timer" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-2, 0)
+zoom = Vector2(0.45, 0.45)
+position_smoothing_enabled = true
+drag_left_margin = 0.15
+drag_top_margin = 0.3
+drag_right_margin = 0.15
+drag_bottom_margin = 0.15
+editor_draw_limits = true
+editor_draw_drag_margin = true
+script = ExtResource("27_dio5j")
+
+[node name="HealthComponent" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("53_d2ay0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthComponent"]
+position = Vector2(0.125, -5.6875)
+shape = SubResource("CircleShape2D_46lp1")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(-1.87694, 2.03855)
+emitting = false
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+direction = Vector2(0, 0)
+gravity = Vector2(0, 0)
+initial_velocity_max = 20.0
+scale_amount_min = 30.0
+scale_amount_max = 30.0
+
+[node name="AttackDirector" type="Node2D" parent="." node_paths=PackedStringArray("hitbox")]
+position = Vector2(0, -7.88)
+script = ExtResource("51_pnv81")
+hitbox = NodePath("HitboxComponent")
+
+[node name="HitboxComponent" type="Area2D" parent="AttackDirector"]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("52_k0bpp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackDirector/HitboxComponent"]
+position = Vector2(-0.0625, 0.8175)
+shape = SubResource("CircleShape2D_3khjw")
+disabled = true
+
+[node name="ActionableFinder" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActionableFinder"]
+position = Vector2(13.8125, -7.0625)
+shape = SubResource("CircleShape2D_5vvgt")
+
+[connection signal="timeout" from="dashTimer" to="Movement" method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="canDashTimer" to="Movement" method="_on_can_dash_timer_timeout"]
